@@ -1,0 +1,53 @@
+
+<div class="faq_container">
+    {% for block in section.blocks %}
+        {% if block.type == 'headline' %}
+            <h3>{{block.settings.title}}</h3>
+        {% elsif block.type == 'QA' %}
+            <button class="faq_question">{{block.settings.question}}</button>
+            <div class="faq_answer">
+                <p>{{block.settings.answer}}</p>
+            </div>
+        {% endif %}
+    {% endfor %} 
+</div>
+
+{% schema %}
+{
+   "name": "FAQs Section",
+   "blocks":[
+    {
+       "type": "QA",
+       "name": "Question/Answer",
+       "settings": [
+            {
+                "type": "text",
+                "label": "Heading",
+                "id": "title"
+            },
+            {
+                "type": "text",
+                "label": "Question",
+                "id": "question"
+            },
+            {
+                "type": "richtext",
+                "label": "Answer",
+                "id": "answer"
+            }
+        ]
+    },
+    {
+       "type": "headline",
+       "name": "Headline",
+      "settings": [
+        {
+           "type": "text",
+           "label": "Headline",
+           "id": "title"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
